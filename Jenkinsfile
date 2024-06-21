@@ -19,7 +19,7 @@ pipeline {
 					sh './plugin-builder build ../${PLUGIN_NAME} ../${PLUGIN_NAME2}'
                     archiveArtifacts artifacts: "target/${PLUGIN_NAME};singleton:=true-${IDEMPIERE_VERSION}.${BUILD_NUMBER}.jar", fingerprint: true
                     archiveArtifacts artifacts: "target/${PLUGIN_NAME2};singleton:=true-${IDEMPIERE_VERSION}.${BUILD_NUMBER}.jar", fingerprint: true
-                    sh 'rm -rf target ../${PLUGIN_NAME};singleton:=true/target ../${PLUGIN_NAME2};singleton:=true/target'
+                    sh 'rm -rf target ../${PLUGIN_NAME}/target ../${PLUGIN_NAME2}/target'
                 }
             }
         }
