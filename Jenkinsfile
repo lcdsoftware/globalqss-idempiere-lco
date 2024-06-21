@@ -17,9 +17,9 @@ pipeline {
                 dir('target-platform') {
                     git branch: '10', url: 'https://github.com/ingeint/idempiere-target-platform-plugin.git'
 					sh './plugin-builder build ../${PLUGIN_NAME} ../${PLUGIN_NAME2}'
-                    archiveArtifacts artifacts: "target/${PLUGIN_NAME}-${IDEMPIERE_VERSION}.${BUILD_NUMBER}.jar", fingerprint: true
-                    archiveArtifacts artifacts: "target/${PLUGIN_NAME2}-${IDEMPIERE_VERSION}.${BUILD_NUMBER}.jar", fingerprint: true
-                    sh 'rm -rf target ../${PLUGIN_NAME}/target ../${PLUGIN_NAME2}/target'
+                    archiveArtifacts artifacts: "target/${PLUGIN_NAME};singleton:=true-${IDEMPIERE_VERSION}.${BUILD_NUMBER}.jar", fingerprint: true
+                    archiveArtifacts artifacts: "target/${PLUGIN_NAME2};singleton:=true-${IDEMPIERE_VERSION}.${BUILD_NUMBER}.jar", fingerprint: true
+                    sh 'rm -rf target ../${PLUGIN_NAME};singleton:=true/target ../${PLUGIN_NAME2};singleton:=true/target'
                 }
             }
         }
